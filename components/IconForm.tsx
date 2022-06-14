@@ -2,12 +2,12 @@ import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from '@dnd-kit/utilities'
 
 interface IconFormType {
-  id: any
-  name: any
+  id: string
   img: string
+  name : string
 }
 
-const IconForm = ({ id, name, img }: IconFormType) => {
+const IconForm = ({ id, img, name }: IconFormType) => {
 
   const {
     setNodeRef,
@@ -34,7 +34,13 @@ const IconForm = ({ id, name, img }: IconFormType) => {
       {...listeners}
       style={style}
     >
-      <img src={img} style ={{ width: 100, height: 100 }}/>
+      <img 
+        src={img} 
+        alt={name} 
+        title={name} 
+        style ={{ width: 100, height: 100 }}
+      />
+      {/* <img> 부분 next.js 참고해서 next/image 형식으로 바꿔야함 */}
     </div>
   )
 }

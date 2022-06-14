@@ -1,12 +1,12 @@
-import React from "react";
-import Head from 'next/head';
-import Image from 'next/image';
-// import '../styles/globals.css';
-import styles from '../styles/Home.module.css';
+import IconCard from '../components/IconCard'
+import Title from '../components/Title'
 
 const Home = () => {
   return (
-    ''
+    <>
+      <Title title = 'Home' />
+      <IconCard />
+    </>
   )
 }
 
