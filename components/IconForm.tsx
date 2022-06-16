@@ -37,7 +37,7 @@ const IconForm = ({ id, img, name }: IconFormType) => {
         src={img} 
         alt={name} 
         title={name} 
-        style ={{ width: 100, height: 100 }}
+        className='w-24 h-24'
       />
       {/* <img> 부분 next.js 참고해서 next/image 형식으로 바꿔야함 */}
     </div>

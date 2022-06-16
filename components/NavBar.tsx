@@ -3,16 +3,16 @@ import Link from "next/link";
 const NavBar = () => {
   return (
     <nav>
-      <div className='flex justify-between bg-black font-bold text-white mx-auto'>
-        <div className='flex items-center px-3 py-4'>
+      <div className='flex mx-auto font-bold text-white bg-black justify-between'>
+        <div className='flex px-3 py-4 items-center'>
           <Link href='/'>
-            <a className='mx-5 text-2xl font-black'>TierList</a>
+            <a className='mx-5 font-black text-2xl'>TierList</a>
           </Link>
           <Link href='/'>
             <a className=''>카테고리</a>
           </Link>
         </div>
-        <div className='flex space-x-5 items-center px-3 py-4 mx-5'>
+        <div className='flex px-3 py-4 mx-5 space-x-5 items-center'>
           <Link href='/'>
             <a className=''>로그인</a>
           </Link>

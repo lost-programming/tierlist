@@ -46,15 +46,7 @@ const IconCard = () => {
   }
 
   return (
-    <div
-      style={{
-        margin: 'auto',
-        width: 450,
-        height: 450,
-        display: 'flex',
-        textAlign: 'center', 
-      }}
-    >
+    <div className='mx-auto flex' >
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
