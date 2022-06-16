@@ -49,8 +49,10 @@ const IconCard = () => {
     <div
       style={{
         margin: 'auto',
-        width: 100,
-        textAlign: 'center'
+        width: 450,
+        height: 450,
+        display: 'flex',
+        textAlign: 'center', 
       }}
     >
       <DndContext

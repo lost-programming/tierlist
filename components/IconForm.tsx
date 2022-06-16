@@ -21,7 +21,6 @@ const IconForm = ({ id, img, name }: IconFormType) => {
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
-    border: '2px solid black',
     marginBottom: 10,
     marginTop: 10,
     opacity: isDragging ? 0.5 : 1
