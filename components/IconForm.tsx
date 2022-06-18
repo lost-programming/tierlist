@@ -8,7 +8,6 @@ interface IconFormType {
 }
 
 const IconForm = ({ id, img, name }: IconFormType) => {
-
   const {
     setNodeRef,
     attributes,
