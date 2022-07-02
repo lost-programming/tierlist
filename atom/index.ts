@@ -5,6 +5,20 @@ export const defaultList = atom({
   default: ['S', 'A', 'B', 'C', 'D']
 });
 
+export const tierItems = atom({
+  key: 'tierItems',
+  default: {
+    itemBox: [],
+    classBox: [
+      {id: 'S', items: []},
+      {id: 'A', items: []},
+      {id: 'B', items: []},
+      {id: 'C', items: []},
+      {id: 'D', items: []},
+    ]
+  }
+});
+
 export const foodItems = atom({
   key: 'foodItems',
   default: [

@@ -22,7 +22,7 @@ const ItemBox = () => {
   }
 
   return (
-    <div className='mx-auto flex' >
+    <div className='mx-auto flex'>
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
