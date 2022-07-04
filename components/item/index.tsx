@@ -3,21 +3,22 @@ import {closestCenter, DndContext, PointerSensor, useSensor} from "@dnd-kit/core
 import {arrayMove, SortableContext, verticalListSortingStrategy} from "@dnd-kit/sortable";
 import ImageItem from "./image";
 import {useRecoilState} from "recoil";
-import {foodItems} from "../../atom";
+import {foodItems, tierItems} from "../../atom";
 
 const ItemBox = () => {
-  const [items, setItems] = useRecoilState(foodItems);
+  const [items, setItems] = useRecoilState(tierItems);
 
   const sensors = [useSensor(PointerSensor)]
 
   const handleDragEnd = ({ active, over }: any) => {
     if (active.id !== over.id) {
-      setItems((items) => {
-        const oldIndex = items.findIndex(item => item.id === active.id)
-        const newIndex = items.findIndex(item => item.id === over.id)
+      const activeIndex = items.itemBox.findIndex(item => item.id === active.id);
+      const overIndex = items.itemBox.findIndex(item => item.id === over.id);
 
-        return arrayMove(items, oldIndex, newIndex)
-      })
+      setItems((items) => ({
+        ...items,
+        itemBox: arrayMove(items.itemBox, activeIndex, overIndex)
+      }));
     }
   }
 
@@ -29,10 +30,10 @@ const ItemBox = () => {
         onDragEnd={handleDragEnd}
       >
         <SortableContext
-          items={items.map(item => item.id)}
+          items={items.itemBox.map(item => item.id)}
           strategy={verticalListSortingStrategy}
         >
-          {items.map(item => <ImageItem {...item} key={item.id}/>)}
+          {items.itemBox.map(item => <ImageItem {...item} key={item.id}/>)}
         </SortableContext>
       </DndContext>
     </div>

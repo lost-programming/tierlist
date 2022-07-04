@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <div className="w-[1160px] h-full py-[80px] my-0 mx-auto">
       <DndContext>
-        {list.map((item: string, index) => {
+        {list.map((item: any, index) => {
           return (
-            <List title={item} items={abs.classBox[index]} key={`list-${index}`}/>
+            <List title={item.id} bgStyle={item.style} items={abs.classBox[index]} key={`list-${index}`}/>
           )
         },)}
       </DndContext>

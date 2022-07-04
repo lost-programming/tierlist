@@ -56,6 +56,11 @@ module.exports = {
       serif: ["Merriweather", "serif"],
     },
     colors: {
+      S: "#FF7F7F",
+      A: "#FFBF7F",
+      B: "#FFDF7F",
+      C: "#FFFF7F",
+      D: "#BFFF7F",
       blue000: "#CAE2FC",
       blue005: "#75ADFF",
       blue010: "#609BFF",
