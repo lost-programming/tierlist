@@ -1,6 +1,5 @@
 import React from "react";
-import {useSortable} from "@dnd-kit/sortable";
-import {CSS} from "@dnd-kit/utilities";
+import { useDrag } from "react-dnd";
 
 interface ItemProps {
   id: string
@@ -9,39 +8,26 @@ interface ItemProps {
 }
 
 const ImageItem = ({ id, img, name }: ItemProps) => {
-  const {
-    setNodeRef,
-    attributes,
-    listeners,
-    transition,
-    transform,
-    isDragging,
-  } = useSortable({ id: id })
-
-  const style = {
-    transition,
-    transform: CSS.Transform.toString(transform),
-    marginBottom: 10,
-    marginTop: 10,
-    opacity: isDragging ? 0.5 : 1
-  }
+  const [{isDragging}, drag] = useDrag(() => ({
+    type: 'image',
+    item: {id: id},
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging()
+    }),
+  }));
 
   return (
-    <div
-      ref={setNodeRef}
-      {...attributes}
-      {...listeners}
-      style={style}
-    >
-      <img
-        src={img}
-        alt={name}
-        title={name}
-        className='w-24 h-24'
-      />
-      {/* <img> 부분 next.js 참고해서 next/image 형식으로 바꿔야함 */}
-    </div>
-  )
+    <img
+      id={id}
+      src={img}
+      alt={name}
+      title={name}
+      ref={drag}
+      className='w-24 h-24'
+      style={{ opacity: isDragging ? 0.5 : 1 }}
+    />
+    /* <img> 부분 next.js 참고해서 next/image 형식으로 바꿔야함 */
+  );
 }
 
 export default ImageItem;
