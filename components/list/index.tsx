@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ImageItem from "../item/image/index";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { foodItems } from "../../atom";
 import { useDrop } from "react-dnd";
 
@@ -13,12 +13,14 @@ interface ListProps {
 const List = ({ title, bgStyle }: ListProps) => {
   const bgClass = `bg-${title}`;
 
-  const items = useRecoilValue(foodItems);
+  const [items, setItems] = useRecoilState(foodItems);
   const [board, setBoard] = useState([]);
 
   const addImageToBoard = (id: any) => {
     const imageList = items.filter((image: any) => id === image.id);
     setBoard((board):any => [...board, imageList[0]]);
+    const ItemList = items.filter((image: any) => id !== image.id);
+    setItems(ItemList)
   };
 
   const [{isOver}, drop] = useDrop(() => ({
@@ -36,7 +38,7 @@ const List = ({ title, bgStyle }: ListProps) => {
       </div>
       <div className="flex items-center w-full h-full bg-black" ref={drop}>
         {board.map((image: any) => {
-          return <ImageItem id={image.id} img={image.img} name={image.name}/>
+          return <ImageItem key={image.id} id={image.id} img={image.img} name={image.name}/>
         })}
       </div>
     </div>

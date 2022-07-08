@@ -17,6 +17,7 @@ const ImageItem = ({ id, img, name }: ItemProps) => {
   }));
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       id={id}
       src={img}
