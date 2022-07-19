@@ -11,11 +11,6 @@ export const defaultList = atom({
   ]
 });
 
-export const testValue = atom({
-  key: 'testValue',
-  default: []
-})
-
 export const foodItems = atom({
   key: 'foodItems',
   default: [

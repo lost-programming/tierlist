@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ImageItem from "../item/image/index";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { foodItems } from "../../atom";
 import { useDrop } from "react-dnd";
+import { useRecoilValue } from "recoil";
+import { foodItems } from "../../atom";
 
 interface ListProps {
   title: string;
@@ -10,21 +10,13 @@ interface ListProps {
   isDrop: any;
 }
 
-const List = ({ title, items, isDrop }: ListProps) => {
-  const [board, setBoard] = useState([]);
-
-  // const addImageToBoard = (id: any, list: any) => {
-  //   const imageList = list.filter((image: any) => id === image.id);
-  //   setBoard((board):any => [...board, imageList[0]]);
-  //   const ItemList = list.filter((image: any) => id !== image.id);
-  //   setItems(ItemList);
-  // };
-
+const List = ({ title, items, isDrop}: ListProps) => {
+  const foodList = useRecoilValue(foodItems);
   const [{isOver}, drop] = useDrop(() => ({
     accept: 'image',
-    drop: (item: any) => isDrop(item.id, title),
+    drop: (item: any) => isDrop(item.id, title, foodList),
     collect: (monitor) => ({
-      isOver: !!monitor.isOver()
+      isOver: monitor.isOver()
     }),
   }));
 
@@ -35,7 +27,9 @@ const List = ({ title, items, isDrop }: ListProps) => {
       </div>
       <div className="flex items-center w-full h-full bg-black" ref={drop}>
         {items.map((image: any) => {
-          return <ImageItem key={image.id} id={image.id} img={image.img} name={image.name}/>
+          return (
+            <ImageItem key={image.id} id={image.id} img={image.img} name={image.name}/>
+          )
         })}
       </div>
     </div>
