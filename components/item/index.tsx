@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ImageItem from "./image";
-import { useRecoilValue } from "recoil";
-import { foodItems } from "../../atom";
 
-const ItemBox = () => {
-  const items = useRecoilValue(foodItems);
-  useEffect(() => {
-    console.log(items)
-  }, [items]) 
+interface ItemBoxProps {
+  items: any;
+}
 
+const ItemBox = ({ items }: ItemBoxProps) => {
   return (
     <div className='mx-auto flex'>
       {items.map((image: any) => {

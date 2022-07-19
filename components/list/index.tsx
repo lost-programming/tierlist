@@ -1,31 +1,28 @@
 import React, { useState } from "react";
 import ImageItem from "../item/image/index";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { foodItems } from "../../atom";
 import { useDrop } from "react-dnd";
 
 interface ListProps {
   title: string;
   items: any;
-  bgStyle: string;
+  isDrop: any;
 }
 
-const List = ({ title, bgStyle }: ListProps) => {
-  const bgClass = `bg-${title}`;
-
-  const [items, setItems] = useRecoilState(foodItems);
+const List = ({ title, items, isDrop }: ListProps) => {
   const [board, setBoard] = useState([]);
 
-  const addImageToBoard = (id: any) => {
-    const imageList = items.filter((image: any) => id === image.id);
-    setBoard((board):any => [...board, imageList[0]]);
-    const ItemList = items.filter((image: any) => id !== image.id);
-    setItems(ItemList)
-  };
+  // const addImageToBoard = (id: any, list: any) => {
+  //   const imageList = list.filter((image: any) => id === image.id);
+  //   setBoard((board):any => [...board, imageList[0]]);
+  //   const ItemList = list.filter((image: any) => id !== image.id);
+  //   setItems(ItemList);
+  // };
 
   const [{isOver}, drop] = useDrop(() => ({
     accept: 'image',
-    drop: (item: any) => addImageToBoard(item.id),
+    drop: (item: any) => isDrop(item.id, title),
     collect: (monitor) => ({
       isOver: !!monitor.isOver()
     }),
@@ -33,11 +30,11 @@ const List = ({ title, bgStyle }: ListProps) => {
 
   return (
     <div className="flex h-[100px] border border-b-gray020">
-      <div className={`flex items-center justify-center w-[120px] h-full ${bgStyle}`}>
+      <div className={`flex items-center justify-center w-[120px] h-full bg-${title}`}>
         <p className="">{title}</p>
       </div>
       <div className="flex items-center w-full h-full bg-black" ref={drop}>
-        {board.map((image: any) => {
+        {items.map((image: any) => {
           return <ImageItem key={image.id} id={image.id} img={image.img} name={image.name}/>
         })}
       </div>

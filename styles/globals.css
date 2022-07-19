@@ -18,3 +18,23 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.bg-s {
+  background-color: #FF7F7F;
+}
+
+.bg-a {
+  background-color: #FFBF7F;
+}
+
+.bg-b {
+  background-color: #FFDF7F;
+}
+
+.bg-c {
+  background-color: #FFFF7F;
+}
+
+.bg-d {
+  background-color: #BFFF7F;
+}

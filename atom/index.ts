@@ -3,13 +3,18 @@ import {atom} from "recoil";
 export const defaultList = atom({
   key: 'defaultList',
   default: [
-    {id: 'S', style: 'bg-blue000', list: []},
-    {id: 'A', style: 'bg-blue005', list: []},
-    {id: 'B', style: 'bg-blue010', list: []},
-    {id: 'C', style: 'bg-blue020', list: []},
-    {id: 'D', style: 'bg-blue030', list: []}
+    {id: 's', list: []},
+    {id: 'a', list: []},
+    {id: 'b', list: []},
+    {id: 'c', list: []},
+    {id: 'd', list: []}
   ]
 });
+
+export const testValue = atom({
+  key: 'testValue',
+  default: []
+})
 
 export const foodItems = atom({
   key: 'foodItems',
@@ -38,6 +43,5 @@ export const foodItems = atom({
       id: '5',
       name: '보쌈',
       img: 'https://recipe1.ezmember.co.kr/cache/recipe/2017/07/20/ecdefb73ec9113b40fcb123183e4eeb51.jpg'
-    }
-  ]
+    }]
 });
